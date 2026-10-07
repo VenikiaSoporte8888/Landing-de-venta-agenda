@@ -374,13 +374,14 @@ a.boton,.barra a{animation:latido-boton 1.8s ease-in-out infinite}
 </div>
 <script>
 (function(){
-  var ID='1672456137790051', KEY='consent-meta', caja=document.getElementById('aviso-datos');
+  var KEY='consent-meta', caja=document.getElementById('aviso-datos');
   function leer(){ try{return localStorage.getItem(KEY);}catch(e){return null;} }
   function guardar(v){ try{localStorage.setItem(KEY,v);}catch(e){} }
   function cargarPixel(){
     if(window.fbq) return;
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init',ID); fbq('track','PageView');
+    fbq('init', '1672456137790051');
+    fbq('track', 'PageView');
     document.addEventListener('click',function(ev){
       var a=ev.target.closest&&ev.target.closest('a[href*="pay.hotmart.com"]');
       if(a&&window.fbq) fbq('track','InitiateCheckout',{value:9.99,currency:'EUR'});
