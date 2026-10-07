@@ -160,6 +160,10 @@ a.boton,.barra a{animation:latido-boton 1.8s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){a.boton,.barra a{animation:none}}
 .astrolin{display:flex;align-items:center;gap:14px;margin:0 0 18px;max-width:440px;width:100%}.astrolin img{width:96px;height:auto;flex:none;border-radius:50%;border:3px solid #E3BE74;background:#F7EEDF;box-shadow:0 6px 16px rgba(0,0,0,.35)}.astrolin p{position:relative;margin:0;background:#F7EEDF;color:#452428;padding:12px 16px;border-radius:18px;font-size:1.05rem;line-height:1.35;box-shadow:0 6px 16px rgba(0,0,0,.3)}.astrolin p:before{content:"";position:absolute;left:-9px;top:50%;margin-top:-9px;border:9px solid transparent;border-left:0;border-right-color:#F7EEDF}
 .astrolin .robo{width:96px;height:96px;flex:none;filter:drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+.cookies{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;max-width:560px;margin:0 auto;background:#F7EEDF;color:#452428;border:1px solid #C79A47;border-radius:16px;box-shadow:0 12px 34px rgba(0,0,0,.45);padding:16px 18px;font-size:.95rem;line-height:1.45;display:none}
+.cookies.ver{display:block}.cookies p{margin:0 0 12px}.cookies .fila{display:flex;gap:10px;flex-wrap:wrap}
+.cookies button{flex:1 1 140px;font:inherit;font-weight:600;padding:11px 14px;border-radius:999px;cursor:pointer;border:2px solid #6A3357}
+.cookies .si{background:#6A3357;color:#fff}.cookies .no{background:transparent;color:#6A3357}
 </style>
 </head>
 <body>
@@ -363,6 +367,31 @@ a.boton,.barra a{animation:latido-boton 1.8s ease-in-out infinite}
 <script>
 (function(){var v=document.querySelector('.video video');if(!v||!('IntersectionObserver' in window))return;v.muted=true;var hecho=false;
  new IntersectionObserver(function(e){if(e[0].isIntersecting&&!hecho){hecho=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}},{threshold:.6}).observe(v);})();
+</script>
+<div class="cookies" id="cookies" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+  <p>Usamos una cookie de Meta (Facebook) para medir qué anuncios funcionan y mostrarte anuncios más útiles. Solo se activa si la aceptas.</p>
+  <div class="fila"><button type="button" class="si" id="cookies-si">Aceptar</button><button type="button" class="no" id="cookies-no">Rechazar</button></div>
+</div>
+<script>
+(function(){
+  var ID='1672456137790051', KEY='cookies-meta', caja=document.getElementById('cookies');
+  function leer(){ try{return localStorage.getItem(KEY);}catch(e){return null;} }
+  function guardar(v){ try{localStorage.setItem(KEY,v);}catch(e){} }
+  function cargarPixel(){
+    if(window.fbq) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init',ID); fbq('track','PageView');
+    document.addEventListener('click',function(ev){
+      var a=ev.target.closest&&ev.target.closest('a[href*="pay.hotmart.com"]');
+      if(a&&window.fbq) fbq('track','InitiateCheckout',{value:9.99,currency:'EUR'});
+    });
+  }
+  var estado=leer();
+  if(estado==='si') cargarPixel();
+  else if(estado!=='no' && caja) caja.classList.add('ver');
+  document.getElementById('cookies-si').addEventListener('click',function(){guardar('si');caja.classList.remove('ver');cargarPixel();});
+  document.getElementById('cookies-no').addEventListener('click',function(){guardar('no');caja.classList.remove('ver');});
+})();
 </script>
 </body>
 </html>
