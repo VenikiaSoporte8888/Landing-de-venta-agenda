@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Venikiapp · Agenda Astrológica 2027</title>
-<meta name="description" content="Agenda Astrológica 2027: tu agenda hecha app, con el cielo de cada día y espacio para escribir. Pago único.">
+<meta name="description" content="Agenda Astrológica 2027: tu agenda hecha app, con el cielo de cada día y espacio para escribir. Gratis.">
 <meta name="robots" content="noindex">
 <style>
 @font-face{font-family:"Cormorant Garamond";font-weight:500 700;font-display:swap;src:url("cormorant.woff2") format("woff2")}
@@ -42,8 +42,8 @@ h1{font:600 clamp(2rem,8vw,2.5rem)/1.1 "Cormorant Garamond",Georgia,serif;color:
   <div class="portada"><img src="portada.webp" alt="Portada de la Agenda Astrológica 2027"></div>
   <h1>Agenda Astrológica 2027</h1>
   <p class="sub">Tu agenda hecha app: el cielo de cada día y espacio para escribir, todo en tu móvil durante 2027.</p>
-  <a class="boton principal" href="https://pay.hotmart.com/X107901009F" rel="noopener">Quiero mi agenda por 9,99 €</a>
-  <p class="precio">Pago único · Sin suscripción · IVA incluido · Hasta el 30 de noviembre</p>
+  <a class="boton principal" href="https://chat.whatsapp.com/BWOD3dfzyNbApR4HW6M6K1" rel="noopener">Quiero mi agenda gratis</a>
+  <p class="precio">Gratis · Sin suscripción</p>
   <a class="boton secundario" href="https://landing-de-venta-agenda.venikiasoporte.workers.dev/">Ver qué incluye la agenda</a>
   <a class="boton secundario" href="../masterclass/">7 masterclasses gratis sobre 2027</a>
   <p class="pie">Venikiapp · Apps para conocerte mejor<br><a href="../privacidad/">Privacidad y cookies</a></p>
@@ -64,8 +64,8 @@ h1{font:600 clamp(2rem,8vw,2.5rem)/1.1 "Cormorant Garamond",Georgia,serif;color:
     fbq('init', '1672456137790051');
     fbq('track', 'PageView');
     document.addEventListener('click',function(ev){
-      var a=ev.target.closest&&ev.target.closest('a[href*="pay.hotmart.com"]');
-      if(a&&window.fbq) fbq('track','InitiateCheckout',{value:9.99,currency:'EUR'});
+      var a=ev.target.closest&&ev.target.closest('a[href*="chat.whatsapp.com"]');
+      if(a&&window.fbq) fbq('track','Lead');
     });
   }
   var estado=leer();
